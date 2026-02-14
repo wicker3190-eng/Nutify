@@ -26,6 +26,5 @@ class Main : AppCompatActivity() {
             val i = Intent(this, Logout::class.java)
             startActivity(i)
         }
-
     }
 }

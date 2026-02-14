@@ -95,7 +95,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/Redirect"
+                android:id="@+id/SURedirect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

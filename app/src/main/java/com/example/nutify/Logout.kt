@@ -9,29 +9,45 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.nutify.databinding.ActivityLogoutBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class Logout : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var binding: ActivityLogoutBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_logout)
+
+        binding = ActivityLogoutBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        auth = FirebaseAuth.getInstance()
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        val logout = findViewById<Button>(R.id.BTN_Logout)
+        auth.currentUser?.let {
+            binding.TVEmail.text = "Email: ${it.email}"
+            binding.TVPassword.text = "Password: ********"
+        }
+
+        binding.BTNLogout.setOnClickListener {
+            auth.signOut()
+            startActivity(Intent(this, Login::class.java))
+            finish()
+        }
+
+
         val home = findViewById<ImageView>(R.id.IV_Home)
 
         home.setOnClickListener {
-            val i = Intent(this, Main::class.java)
-            startActivity(i)
-        }
-
-        logout.setOnClickListener {
-            val i = Intent(this, Login::class.java)
-            startActivity(i)
+            finish()
         }
 
     }

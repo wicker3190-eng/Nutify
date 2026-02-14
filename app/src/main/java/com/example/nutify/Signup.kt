@@ -35,27 +35,33 @@ class Signup : AppCompatActivity() {
             insets
         }
 
-        val home = findViewById<TextView>(R.id.Redirect)
+        binding.SURedirect.setOnClickListener {
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+        }
 
-        binding.BTNsignup.setOnClickListener {
+        binding.BTNSignup.setOnClickListener {
             val name = binding.signupName.text.toString()
             val email = binding.signupEmail.text.toString()
-            val password = binding.signupPassword.text.toString()
+            val pass = binding.signupPassword.text.toString()
             val conpassword = binding.signupPassword.text.toString()
 
-            if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
-                if (password. == conpassword) {
-
+            if (name.isNotEmpty() && email.isNotEmpty() && pass.isNotEmpty() && conpassword.isNotEmpty()) {
+                if (pass == conpassword) {
+                    auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            val intent = Intent(this, Login::class.java)
+                            startActivity(intent)
+                        } else {
+                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }else{
+                    Toast.makeText(this, "Password does not match!", Toast.LENGTH_SHORT).show()
                 }
+            }else{
+                Toast.makeText(this, "There are remaining fields left!", Toast.LENGTH_SHORT).show()
             }
-
-
         }
-
-        home.setOnClickListener {
-            val i = Intent(this, Login::class.java)
-            startActivity(i)
-        }
-
     }
 }
