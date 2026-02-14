@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nutify">
         <activity
+            android:name=".claim"
+            android:exported="false" />
+        <activity
+            android:name=".lost"
+            android:exported="false" />
+        <activity
+            android:name=".report"
+            android:exported="false" />
+        <activity
             android:name=".Logout"
             android:exported="false" />
         <activity
@@ -25,8 +34,10 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

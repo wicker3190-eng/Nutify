@@ -10,30 +10,45 @@
     android:gravity="center"
     android:background="@drawable/appbackground">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/IV_Settings"
+            android:layout_width="60dp"
+            android:layout_height="68dp"
+            android:clickable="true"
+            android:padding="5dp"
+            android:src="@drawable/baseline_settings_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.954"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/TV_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="NUtify!"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center">
-
-        <ImageView
-            android:id="@+id/IV_Settings"
-            android:layout_width="45dp"
-            android:layout_height="55dp"
-            android:clickable="true"
-            android:padding="5dp"
-            android:src="@drawable/baseline_settings_24"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="360dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/TV_Title"
-            android:text="NUtify!"
-            android:textSize="20dp"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/white"
-            android:layout_marginTop="25dp"/>
 
     </FrameLayout>
 
